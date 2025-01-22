@@ -38,5 +38,6 @@ const writeJSON = (fileName, data) => {
 }
 
 module.exports = {
-    getJoke
+    getJoke,
+    readJSON
 }

@@ -10,11 +10,19 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 //importo modulo di getJoke
-const { getJoke } = require('./utils.js');
+const { getJoke, readJSON } = require('./utils.js');
 
 //definiamo le rotte
 app.get('/', (req, res) => {
     getJoke(barza => res.send(`<h1>${barza}</h1>`));
+});
+
+app.get('/list', (req, res) => {
+    const barze = readJSON('norrisDB');
+    let html = '<div><ul>'
+    barze.forEach(barza  => html += `<li>${barza}</li>`);
+    html += '</ul></div>'
+    res.send(html);
 })
 
 app.listen(port, () => {
