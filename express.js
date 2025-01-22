@@ -9,6 +9,9 @@ const app = express();
 //porta default 3000
 const port = process.env.PORT || 3000;
 
+//importo modulo di getJoke
+const { getJoke } = require('./utils.js');
+
 //definiamo le rotte
 app.get('/', (req, res) => {
     getJoke(barza => res.send(`<h1>${barza}</h1>`));
